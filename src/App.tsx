@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import { Link } from "@reach/router";
+import { Store } from "./Store";
+import "./App.css";
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface IProps {
+  children: any;
+  path: string;
 }
+
+const App: React.FC<IProps> = ({ children }) => {
+  const { state } = useContext(Store);
+
+  return (
+    <>
+      <header className="header">
+        <h1>Rick and Morty</h1>
+        <div>
+          <p>Pick your favourite episode!</p>
+          <Link to="/">Home</Link>
+          <Link to="/favs">
+            {" "}
+            You picked {state.favourites.length}{" "}
+            {state.favourites.length === 1 ? "episode" : "episodes"}
+          </Link>
+        </div>
+      </header>
+      {children}
+    </>
+  );
+};
 
 export default App;
