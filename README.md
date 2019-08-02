@@ -1,3 +1,5 @@
+## Training project for learn TypeScript, the result is Rick and Morty favourite episodes picker, enjoy!
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
